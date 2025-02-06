@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Поиск в 10 системах</title>
+    <!-- Подключаем Font Awesome для иконок -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .search-links {
+            margin-top: 20px;
+        }
+
+        .search-engine {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            text-decoration: none;
+            color: #333;
+            font-size: 14px;
+        }
+
+        .search-engine:hover {
+            background-color: #e2e6ea;
+        }
+
+        .search-engine i {
+            margin-right: 10px; /* Отступ между иконкой и текстом */
+            font-size: 18px; /* Размер иконки */
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Поиск в 10 системах</h1>
+    <form id="searchForm">
+        <input type="text" id="searchQuery" placeholder="Введите ваш запрос..." required>
+        <button type="submit">Искать</button>
+    </form>
+    <div class="search-links">
+        <a href="#" target="_blank" class="search-engine">
+            <i class="fab fa-google"></i> Google
+        </a>
+        <a href="#" target="_blank" class="search-engine">
+            <i class="fab fa-microsoft"></i> Bing
+        </a>
+        <a href="#" target="_blank" class="search-engine">
+            <i class="fab fa-yahoo"></i> Yahoo
+        </a>
+        <a href="#" target="_blank" class="search-engine">
+            <i class="fas fa-search"></i> DuckDuckGo <!-- Универсальная иконка поиска -->
+        </a>
+        <a href="#" target="_blank" class="search-engine">
+            <i class="fab fa-yandex"></i> Yandex
+        </a>
+        <a href="#" target="_blank" class="search-engine">
+            <i class="fas fa-globe-asia"></i> Baidu <!-- Иконка глобуса для Baidu -->
+        </a>
+        <a href="#" target="_blank" class="search-engine">
+            <i class="fas fa-question-circle"></i> Ask
+        </a>
+        <a href="#" target="_blank" class="search-engine">
+            <i class="fas fa-envelope"></i> AOL <!-- Иконка конверта для AOL -->
+        </a>
+        <a href="#" target="_blank" class="search-engine">
+            <i class="fas fa-square-root-alt"></i> WolframAlpha
+        </a>
+        <a href="#" target="_blank" class="search-engine">
+            <i class="fas fa-leaf"></i> Ecosia
+        </a>
+    </div>
+</div>
+<script>
+    document.getElementById('searchForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Предотвращаем отправку формы и обновление страницы
+        const query = document.getElementById('searchQuery').value;
+        const searchEngines = [
+            { name: 'Google', url: 'https://www.google.com/search?q=' },
+            { name: 'Bing', url: 'https://www.bing.com/search?q=' },
+            { name: 'Yahoo', url: 'https://search.yahoo.com/search?p=' },
+            { name: 'DuckDuckGo', url: 'https://duckduckgo.com/?q=' },
+            { name: 'Yandex', url: 'https://yandex.ru/search/?text=' },
+            { name: 'Baidu', url: 'https://www.baidu.com/s?wd=' },
+            { name: 'Ask', url: 'https://www.ask.com/web?q=' },
+            { name: 'AOL', url: 'https://search.aol.com/aol/search?q=' },
+            { name: 'WolframAlpha', url: 'https://www.wolframalpha.com/input/?i=' },
+            { name: 'Ecosia', url: 'https://www.ecosia.org/search?q=' }
+        ];
+
+        const links = document.querySelectorAll('.search-engine');
+        links.forEach((link, index) => {
+            link.href = searchEngines[index].url + encodeURIComponent(query);
+        });
+
+        // Уведомление пользователя, что ссылки обновлены
+        alert('Ссылки обновлены! Теперь вы можете выбрать поисковую систему.');
+    });
+</script>
+</body>
+</html>
